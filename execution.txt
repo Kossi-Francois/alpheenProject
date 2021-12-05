@@ -1,0 +1,27 @@
+# Franfran heroku public
+
+
+1- go to app dir
+2- git init 
+3- git add . 
+4- git commit : add requierement.txt; procfile; 
+
+5- heroku create  xfranfranpublic  --stack heroku-20 --region eu 
+ 
+6- git push heroku main
+
+
+
+
+
+
+9-heroku ps:scale web=1:free worker=1:free
+
+
+10-heroku logs --tail
+
+
+
+
+
+
