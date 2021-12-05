@@ -55,8 +55,11 @@ p {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.ello
+{background: #4B6A78;}
+
 .sidebar-wrapper {
-  background: #4B6A78;
+  background: #7580D1;
   position: absolute;
   left: 0;
   width: 260px;
@@ -87,6 +90,7 @@ p {
 .sidebar-wrapper .profile-container .profile {
   width: 200px;
   height: auto;
+  text-align:center;
   /*border-radius: 50%;*/
 }
 
@@ -184,6 +188,15 @@ p {
 .sidebar-wrapper .interests-list li:last-child {
   margin-bottom: 0;
 }
+
+
+.sidebar-wrapper .certification {
+  margin: 20px;
+  text-align:center;
+}
+
+
+
 
 .main-wrapper {
   background: #fff;
