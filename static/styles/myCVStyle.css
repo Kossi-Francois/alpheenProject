@@ -89,12 +89,17 @@ p {
 
 .sidebar-wrapper .profile-container .profile {
   text-align:center;
-  width: 100px;
+  width: 250px;
   /*height: auto;*/
   /*border-radius: 50%;*/
 }
 
-
+.sidebar-wrapper .profilecontainer {
+  text-align:center;
+  margin: 10px;
+  /*height: auto;*/
+  /*border-radius: 50%;*/
+}
 
 
 
