@@ -32,6 +32,13 @@ def testCaption():
 
 
 
+@app.route("/downloadpronoprofoot", methods=['GET', 'POST'])
+def downloadpronoprofoot():
+
+    return render_template("downloadProno.html")
+
+
+
 
 
 
