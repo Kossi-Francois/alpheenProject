@@ -86,3 +86,7 @@ if __name__ == '__main__':
 #                     </div><!--//meta-->
 #                 </div><!--//item-->
 #             </section><!--//education-container-->
+
+
+
+#<i class="fas fa-school">
