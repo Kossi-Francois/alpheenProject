@@ -5,7 +5,7 @@ import json
 
 
 
-
+from firbasemod.mainFirebase import myUser, rtdb
 
 
 
@@ -40,6 +40,109 @@ def downloadpronoprofoot():
 
 
 
+@app.route("/deepVisionHome", methods=['GET', 'POST'])
+def deepVisionHome():
+
+    return render_template("deepvisionHome.html")
+
+
+
+
+@app.route("/meteo", methods=['GET', 'POST'])
+def meteo():
+
+    return render_template("AppDebut/index.html")
+
+
+
+
+
+@app.route("/testjs", methods=['GET', 'POST'])
+def testjs():
+
+
+
+    return render_template("tesjs.html")
+
+
+
+
+#*******poe pages
+
+@app.route("/poe_home", methods=['GET', 'POST'])
+def poe_home():
+
+    return render_template("poe/index.html")
+
+
+@app.route("/poe_formulaire", methods=['GET', 'POST'])
+def poe_formulaire():
+
+    return render_template("poe/formulaire.html")
+
+
+@app.route("/poe_liste", methods=['GET', 'POST'])
+def poe_liste():
+
+    return render_template("poe/liste.html")
+
+#*******
+
+
+
+
+
+#*********from js
+
+
+@app.route("/postmethode", methods=['GET', 'POST'])
+def setUser():
+
+
+   # print(myUser.addUser({"name": "kossi"}))
+
+    # print(myUser.getAllUser())
+    print("in post")
+
+    jsonData = request.get_json()
+
+    print(jsonData)
+
+    outputJsData = myUser.methode[jsonData["methode"]](jsonData["data"])
+
+
+    print(outputJsData)
+
+    return jsonify(outputJsData)
+
+
+
+
+
+@app.route("/post2RTDB", methods=['GET', 'POST'])
+def toRTDB():
+
+
+
+    print("in post")
+
+    jsonData = request.get_json()
+
+    print(jsonData)
+
+    outputJsData = rtdb.methode[jsonData["methode"]](jsonData["data"])
+
+
+    print(outputJsData)
+
+
+    return jsonify(outputJsData)
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -54,39 +157,10 @@ if __name__ == '__main__':
 
 
 
-# <section class="section summary-section">
-#                 <h2 align="center" class="section-title"><span class="icon-holder"><i class="fas fa-user"></i></span>Description</h2>
-#                 <div class="summary">
-#                     <p>Mich begeistern neue Technologien und Clean Code. Ich baue Brücken zwischen Technik und Menschen und setze meine analytische Denkweise für die Entwicklung von passgenauen Lösungen ein. Als Entwickler mit siebenjähriger Leadership-Erfahrung ist es mir wichtig, mein Team zu Eigeninitiative, selbstorganisierter Arbeitsweise und konstruktiver Zusammenarbeit zu befähigen. Deshalb beschreibt eine Mischung aus Teamlead und Hands-On für mich den idealen Arbeitsplatz.</p>
-#                 </div><!--//summary-->
-#             </section><!--//section-->
+# https://stackoverflow.com/questions/42388989/bootstrap-center-vertical-and-horizontal-alignment
+
+#https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form
+
+#https://gist.github.com/KentaYamada/2eed4af1f6b2adac5cc7c9063acf8720
 
 
-
-
-
-# <section class="honorary-container container-block">
-#                 <h2 class="section-title"><span class="icon-holder"><i class="fas fa-home"></i></span>Ehrenamt und Nebentätigkeiten</h2>
-#                 <div class="item">
-#                     <div class="meta">
-#                         <div class="upper-row">
-#                             <h3 class="job-title">Tanzlehrer (West Coast Swing)</h3>
-#                             <div class="time">2016 - heute</div>
-#                         </div><!--//upper-row-->
-#                         <div class="company">Ausgebildeter West Coast Swing Instructor (Global PDIA Intermediate Instructor)</div>
-#                     </div><!--//meta-->
-#                 </div><!--//item-->
-#                 <div class="item">
-#                     <div class="meta">
-#                         <div class="upper-row">
-#                             <h3 class="job-title">Tanzlehrer</h3>
-#                             <div class="time">2008 - 2018</div>
-#                         </div><!--//upper-row-->
-#                         <div class="company">Hochschulsport der Universität Münster</div>
-#                     </div><!--//meta-->
-#                 </div><!--//item-->
-#             </section><!--//education-container-->
-
-
-
-#<i class="fas fa-school">

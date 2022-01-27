@@ -4,3 +4,4 @@ Jinja2
 Werkzeug
 MarkupSafe
 googletrans==3.1.0a0
+firebase_admin

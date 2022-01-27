@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='poe/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='poe/style.css')}}">
+
+    <title>Document</title>
+  </head>
+  <body
+    class="d-flex flex-column min-vh-100"
+    style="background-color: rgb(15, 37, 55)"
+  >
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="logo">
+          <a class="navbar-brand" href="./index.html">
+            <img
+              class="logo"
+              src="https://koesio.com/wp-content/uploads/2021/07/salesforce.png"
+              style="max-width: 100%"
+              alt=""
+            />
+          </a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="poe_formulaire"
+                >Accueil <span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="poe_liste"
+                >Nos stagiaires <span class="sr-only"></span
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="container mt-4">
+          <h2>Liste des stagiaire</h2>
+          <hr />
+          <table class="table table-striped" id="tableStagiaires">
+            <thead>
+              <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Email</th>
+                <th scope="col" style="width: 20%; text-align: center">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <a class="btn btn-primary" href="./formulaire.html" role="button">
+            Ajouter un stagiaire</a
+          >
+        </div>
+      </section>
+
+      <div class="container mt-5 mb-5">
+        <h2>Informations du stagiaire</h2>
+        <hr />
+        <div id="infoStagiaire">
+          <small>Cliquer sur un stagiaire pour voir ces informations</small>
+        </div>
+      </div>
+    </main>
+    <footer class="mt-auto">
+      <div class="container-fluid row g-0">
+        <div class="col-12 col-md-8 p-2">
+          <h5>Notre adresse</h5>
+          <p>
+            123 Rue de la formation <br />
+            44000 Nantes <br />
+            France
+          </p>
+        </div>
+        <div class="col-6 col-md-4 p-2">
+          <h5>S'incrire à la newsletter</h5>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder=". . ."
+              required
+            />
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+    integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="{{url_for('static', filename='poe/app.js')}}"></script>
+</html>

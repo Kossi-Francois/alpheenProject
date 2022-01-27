@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='poe/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='poe/style.css')}}">
+
+    <title>Document</title>
+  </head>
+  <body
+    class="d-flex flex-column min-vh-100"
+    style="background-color: rgb(15, 37, 55)"
+  >
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="logo">
+          <a class="navbar-brand" href="poe_home">
+            <img
+              class="logo"
+              src="https://koesio.com/wp-content/uploads/2021/07/salesforce.png"
+              style="max-width: 100%"
+              alt=""
+            />
+          </a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="poe_home"
+                >Accueil <span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="poe_liste"
+                >Nos stagiaires <span class="sr-only"></span
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="container mt-5 mb-5">
+        <h2>Création d'un stagiaire</h2>
+        <hr />
+        <form id="studentForm">
+          <div class="form-group">
+            <label for="nom">Votre nom</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nom"
+              name="nom"
+              required
+            />
+            <div class="err" id="nomErr"></div>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Votre prenom</label>
+            <input
+              type=""
+              class="form-control"
+              id="prenom"
+              name="prenom"
+              required
+            />
+            <div class="err" id="prenomErr"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Votre Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+            <div class="err" id="emailErr"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="etude">Etudes faites</label>
+            <select class="form-control" id="etude" name="etude" required>
+              <option>Choisir votre niveau d'étude</option>
+              <option>(BAC+8) Doctorat</option>
+              <option>(BAC+5) Master</option>
+              <option>(BAC+3) Licence, BUT</option>
+              <option>(BAC+2) BTS, CPGE</option>
+              <option>(BAC+0) Baccalauréat</option>
+              <option>CAP, DNB, CFG</option>
+            </select>
+            <div class="err" id="etudeErr"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="bio">Bio</label>
+            <textarea
+              class="form-control"
+              id="bio"
+              name="bio"
+              rows="3"
+              required
+            ></textarea>
+            <div class="err" id="bioErr"></div>
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit" id="btnSubmit">
+              Ajouter le stagiaire
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer class="mt-auto">
+      <div class="container-fluid row g-0">
+        <div class="col-12 col-md-8 p-2">
+          <h4>Notre adresse</h4>
+          <p>
+            123 Rue de la formation <br />
+            44000 Nantes <br />
+            France
+          </p>
+        </div>
+        <div class="col-6 col-md-4 p-2">
+          <h5>S'incrire à la newsletter</h5>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder=". . ."
+              required
+            />
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+    integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <!--   <script src="app.js"></script> -->
+
+  <script src="{{url_for('static', filename='poe/app.js')}}"></script>
+</html>
