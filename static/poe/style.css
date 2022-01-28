@@ -6,19 +6,58 @@ html {
     rgba(28, 69, 105, 1) 100%
   );
   color: rgb(27, 27, 27);
+  font-size: 18px;
 }
 
 body {
-  background: rgb(15, 37, 55);
-  background: linear-gradient(
-    128deg,
-    rgba(15, 37, 55, 1) 0%,
-    rgba(28, 69, 105, 1) 100%
-  );
+  background: #03224c;
+}
+
+header {
+  background-color: #202020;
 }
 
 header nav div {
   display: flex;
+}
+
+.nav-link {
+  display: block;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+  width: 0;
+  border-bottom: 0.2rem solid;
+  transition: 0.2s linear;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  background-color: white;
+}
+
+.container {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: box-shadow ease 0.15s;
+  border-radius: 10px;
+}
+
+.container_index:hover {
+  /* -ms-transform: scale(1.05); /* IE 9 */
+  /* -webkit-transform: scale(1.05); Safari 3-8 */
+  /* transform: scale(1.05);  */
+  box-shadow: rgba(11, 219, 222, 0.10) 0px 54px 55px,
+    rgba(11, 219, 222, 0.10) 0px -12px 30px, rgba(11, 219, 222, 0.10) 0px 4px 6px,
+    rgba(11, 219, 222, 0.10) 0px 12px 13px, rgba(11, 219, 222, 0.10) 0px -3px 5px;
+ /* box-shadow: 0px 0px 10px 2px rgba(11, 219, 222, 0.486);*/
+  /* outline: 1px solid yellow; */
 }
 
 .logo {
@@ -30,13 +69,17 @@ header nav .navbar-collapse {
 }
 
 .navbar-dark .navbar-toggler {
-  color: none;
-  border-color: none !important;
+  border-color: transparent;
+  margin-right: 10px;
 }
 
 .nav-item {
   margin-right: 20px;
   font-size: x-large;
+}
+
+section {
+  padding: 0 5%;
 }
 
 .indexmain section:nth-child(1) {
@@ -45,7 +88,6 @@ header nav .navbar-collapse {
   grid-template-areas:
     "un un un deux"
     "un un un trois";
-  padding: 0 5%;
 }
 
 .indexmain section:nth-child(1) div:nth-child(1) {
@@ -60,8 +102,32 @@ header nav .navbar-collapse {
 
 .images {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-bottom: 20px;
+}
+
+.images a {
+  flex-basis: 100%;
+  text-align: center;
+  margin: 10px;
+  padding: 20px 5px;
+  vertical-align: middle;
+  background-color: rgba(255, 255, 255, 0.068);
+  border-color: 1px solid white;
+  border-radius: 10px;
+  transition: transform 0.1s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.images a:hover {
+  transform: scale(1.05);
+}
+
+.images a img {
+  width: 65%;
+  margin: auto 0;
 }
 
 .banner {
@@ -88,7 +154,7 @@ main .container-fluid {
 
 footer .container,
 footer .container-fluid {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: #282828;
   padding: 2em;
 }
 
@@ -113,6 +179,7 @@ footer .container-fluid {
   padding: 0.2em 1em;
   margin: 0.1em 0;
   color: rgb(233, 64, 64);
+  height: 35px;
 }
 
 #tableStagiaires tr td:nth-child(4) button {
@@ -121,7 +188,11 @@ footer .container-fluid {
   margin: 5px 5px;
 }
 
-#tableStagiaires tr {
+#tableStagiaires tbody tr {
+  transition: background-color ease 0.2s;
+}
+#tableStagiaires tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.11);
 }
 
 #tableStagiaires tr td:nth-child(4) div {
@@ -140,6 +211,7 @@ footer input[type="email"] {
   background-repeat: no-repeat;
   padding-left: 40px;
   vertical-align: middle;
+  width: 100%;
 }
 
 @media screen and (max-width: 820px) {
@@ -156,8 +228,33 @@ footer input[type="email"] {
       "deux deux deux deux"
       "trois trois trois trois";
   }
+}
 
-  .images > img {
-    width: 20%;
-  }
+Label {
+  font-weight: lighter;
+  font-size: 22px;
+}
+
+.is-valid {
+  outline: 2px solid #00c3ff8e;
+}
+
+.is-invalid {
+  outline: 2px solid #ff00008e;
+}
+
+button,
+a {
+  transition: all ease 0.2s;
+  transform: scale(1);
+}
+
+button:focus,
+main a:focus {
+  box-shadow: none !important;
+}
+
+button:active,
+main a:active {
+  transform: scale(0.95);
 }

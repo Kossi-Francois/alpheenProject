@@ -91,6 +91,7 @@ class RTDB:
         return True
 
     def update(self, data):
+        data["creation_timestamp"] = str(datetime.datetime.now(tz=datetime.timezone.utc))
         self.rtDB_ref.update( {data["id"]: data}  )
         return True
 
