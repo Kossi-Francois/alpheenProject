@@ -16,7 +16,7 @@ console.log("in js");
 
 class Student {
   constructor(id, nom, prenom, email, etude, bio) {
-    this.id = "idxx"  + Math.round(Math.random()* 1000000000).toString(); /******* */
+    this.id = "idxx"  + Math.round(Math.random()* 1000000000).toString();
     this.nom = nom;
     this.prenom = prenom;
     this.email = email;
@@ -48,12 +48,12 @@ class FormFieldValidator {
   static bioMaxChar = 50;
 
   static nomValidation(nom) {
-    nom = nom.replace(/\s/g, "");
+    nom = nom.replace(/\s/g, '');
     return nom.length >= this.nomMinChar && nom.length <= this.nomMaxChar;
   }
 
   static prenomValidation(prenom) {
-    prenom = prenom.replace(/\s/g, "");
+    prenom = prenom.replace(/\s/g, '');
     return (
       prenom.length >= this.prenomMinChar && prenom.length <= this.prenomMaxChar
     );
@@ -76,7 +76,7 @@ class FormFieldValidator {
   }
 
   static bioValidation(bio) {
-    bio = bio.replace(/\s/g, "");
+    bio = bio.replace(/\s/g, '');
     return bio.length >= this.bioMinChar && bio.length <= this.bioMaxChar;
     //return true; //bio != "";
   }
@@ -109,23 +109,25 @@ let showIncorrectField = (incorrectFieldName, currentFormElt) => {
   };
 
   formFielsArray.forEach((element) => {
-    const isInvalide = incorrectFieldName.includes(element);
-    document.querySelector("#" + element + "Err").innerText = isInvalide
-      ? incorrectFielMessage[element]
-      : "";
+    const isInvalide = incorrectFieldName.includes(element)
+    document.querySelector("#" + element + "Err").innerText =
+     isInvalide ? incorrectFielMessage[element] : "";
 
-    if (isInvalide) {
-      currentFormElt[element].classList.remove("is-valid");
-      currentFormElt[element].classList.add("is-invalid");
-    } else {
-      currentFormElt[element].classList.remove("is-invalid");
+     if(isInvalide){
+       currentFormElt[element].classList.remove("is-valid" );
+       currentFormElt[element].classList.add( "is-invalid" );
+     }else{
+       currentFormElt[element].classList.remove("is-invalid" );
 
-      if (incorrectFieldName.length != 0) {
+      if(incorrectFieldName.length != 0 ){
         currentFormElt[element].classList.add("is-valid");
-      } else {
-        currentFormElt[element].classList.remove("is-valid");
+      }else{
+        currentFormElt[element].classList.remove("is-valid" );
       }
-    }
+
+     }
+
+
   });
 };
 
@@ -136,6 +138,7 @@ let emptyForm = (currentFormElt) => {
 };
 
 //////// ********* DataBase
+
 function sendRequest(inputData, callback) {
   const xhr = new XMLHttpRequest();
   // we defined the xhr
@@ -169,10 +172,12 @@ function dbOnserver(userData = {}, serverMethode = "add", after = undefined) {
     console.log(data);
   };
     }
- 
+
 
   sendRequest(inputData, after);
 }
+
+
 
 class MySGBD {
   constructor(dataName = "poeProject") {
@@ -226,35 +231,31 @@ class MySGBD {
 
   update(params) {}
 
-  exporteData() {
+  exporteData(){
     this.data = this.getAll();
 
-    const rows = [["id", "nom", "prenom", "email", "etude", "bio"]];
-    Object.getOwnPropertyNames(this.data).forEach((id) => {
-      rows.push([
-        id,
-        this.data[id]["nom"],
-        this.data[id]["prenom"],
-        this.data[id]["email"],
-        this.data[id]["etude"],
-        this.data[id]["bio"],
-      ]);
-    });
+    const rows = [ ["id", "nom", "prenom", "email", "etude", "bio"] ];
+    Object.getOwnPropertyNames(this.data).forEach((id) =>{
+      rows.push(  [id, this.data[id]["nom"], this.data[id]["prenom"], this.data[id]["email"], this.data[id]["etude"], this.data[id]["bio"]  ])
+    })
 
     let csvContent = "data:text/csv;charset=utf-8,";
 
-    rows.forEach(function (rowArray) {
-      let row = rowArray.join(",");
-      csvContent += row + "\r\n";
-    });
+    rows.forEach(function(rowArray) {
+        let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+      });
 
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "liste_stagiaires.csv");
-    document.body.appendChild(link);
-    link.click();
+
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "liste_stagiaires.csv");
+      document.body.appendChild(link);
+      link.click();
+
   }
+
 }
 
 ////////////////////////***** fin database
@@ -275,7 +276,9 @@ function onClickSubmitForm(formElements) {
       document.getElementById("modalStagiaire")
     );
 
-    modalStagiaire.toggle();
+    modalStagiaire.toggle()
+
+
   } else {
     showIncorrectField(isValideForm, formElements);
   }
@@ -284,7 +287,7 @@ function onClickSubmitForm(formElements) {
 //////////// table student
 
 let showCurentStudent = (aStudent) => {
-  const info2show = `<p> <h4> ${aStudent.prenom} ${aStudent.nom}</h4> <br> <b>Email :  ${aStudent.email}</b><br> 
+  const info2show = `<p> <h4> ${aStudent.prenom} ${aStudent.nom}</h4> <br> <b>Email :  ${aStudent.email}</b><br>
     <b> Études faites :</b> ${aStudent.etude}<br> <b>Bio : </b>${aStudent.bio} </p>`;
   divInfoStagiaire.innerHTML = info2show;
 };
@@ -331,12 +334,11 @@ let addRow2tableStudent = (aStudent) => {
 
 let initStudentTable = () => {
 
-/*************************************************** */
 
   let serveurCallback = (data) =>{
 
     const storedStudent = data;
-     
+
 
     Object.getOwnPropertyNames(storedStudent).forEach((id) => {
       addRow2tableStudent(storedStudent[id]);
@@ -349,12 +351,6 @@ let initStudentTable = () => {
 
 
   dbOnserver({}, "getAll", serveurCallback);
-
-
-
-  
-
-
 
 };
 
@@ -380,15 +376,19 @@ try {
   tableStudent = document.querySelector("#tableStagiaires > tbody");
   divInfoStagiaire = document.querySelector("#infoStagiaire");
 
-  exportDataBtn = document.querySelector("#exportBtn");
+  exportDataBtn = document.querySelector("#exportBtn")
 
-  exportDataBtn.addEventListener("click", (event) => {
+    exportDataBtn.addEventListener("click", (event) => {
     event.preventDefault();
 
     console.log("on btn export");
 
     currentDB.exporteData();
+
+
+
   });
+
 
   initStudentTable();
   console.log("on list students");
