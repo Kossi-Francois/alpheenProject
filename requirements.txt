@@ -1,7 +1,5 @@
-gunicorn
-Flask
-Jinja2
-Werkzeug
-MarkupSafe
-googletrans==3.1.0a0
+fastapi
+pinatapy-vourhey
 firebase_admin
+uvicorn[standard]
+uuid

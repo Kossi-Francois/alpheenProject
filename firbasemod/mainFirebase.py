@@ -2,7 +2,7 @@
 
 
 
-import firebase_admin 
+import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import db  as realtime_db
@@ -15,7 +15,7 @@ cred_path = "/openclasseromConf.json"
 cred = credentials.Certificate(os.path.dirname(__file__) + cred_path)
 firebase_admin.initialize_app(cred)
 
-
+###################################
 
 
 class userModel :
@@ -25,7 +25,7 @@ class userModel :
         self.colName = colName
         self.col_ref = self.db.collection(self.colName)
 
-        self.methode = {"getAll": self.getAllUser,   "add": self.addUser, "update":self.updateUser}
+        self.methode = {"getAll": self.getAllUser,   "add": self.addUsers, "update":self.updateUser}
 
 
     def getAllUser(self, *args):
@@ -35,7 +35,26 @@ class userModel :
         return docs
 
 
-    def addUser(self, users):
+
+    def addaUser(self, aUser):
+        #self.col_ref.document(self.dbName).set(aUser, merge=True)
+
+
+        aUser["creation_timestamp"] = datetime.datetime.now(tz=datetime.timezone.utc)
+
+        
+
+        dictKey = aUser.get("id")
+        if dictKey == None:
+            self.col_ref.add(aUser)
+
+        else:
+            self.col_ref.document(dictKey).set( aUser)
+
+        return True
+
+
+    def addUsers(self, users):
         #self.col_ref.document(self.dbName).set(aUser, merge=True)
 
         for aUser in users:
@@ -66,27 +85,35 @@ class userModel :
 
 
 
-myUser  = userModel( colName = "poeProject")
+myUser  = userModel( colName = "hakaton")
 
-######
+
 
 class RTDB:
-    def __init__(self, refName = "poe"):
+    def __init__(self, refName = "/tempdata"):
         self.dbUrl = "https://openclasserom-test.firebaseio.com/"
-        self.rtDB_ref = realtime_db.reference('/tempdata', url = self.dbUrl)
+        self.rtDB_ref = realtime_db.reference(refName, url = self.dbUrl)
 
-        self.methode = {"getAll": self.getData,   "add": self.update, "delete":self.deleteData}
+        self.methode = {"getAll": self.getAllData,   "add": self.update, "delete":self.deleteData}
 
         self.data = ""
 
 
-    def getData(self, *args):
+    def getAllData(self, *args):
         temp = self.rtDB_ref.get()
 
         return temp
 
 
-    def setData(self, data):
+    def getAData(self, userId, *args):
+        temp = self.rtDB_ref.child(userId).get()
+
+        return temp
+
+
+    def setData(self, userId, data):
+
+        self.rtDB_ref.child(userId).set( data )
 
         return True
 
@@ -102,4 +129,4 @@ class RTDB:
         return True
 
 
-rtdb = RTDB()
+rtdb = RTDB(refName = "/hakaton")
